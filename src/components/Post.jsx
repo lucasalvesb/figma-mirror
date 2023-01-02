@@ -33,18 +33,16 @@ export function Post() {
         </p>
 
         <p>
-          <a href="">#frontend</a>{' '}
-          <a href="">#development</a>
+          <a href="">#frontend</a> <a href="">#development</a>
         </p>
-
       </div>
 
       <form className={styles.commentForm}>
         <strong>Deixe seu feedback!</strong>
-        <textarea 
-          placeholder="Deixe um comentário"
-        />
-        <button type="submit">Publicar</button>
+        <textarea placeholder="Deixe um comentário" />
+        <footer>
+          <button type="submit">Publicar</button>
+        </footer>
       </form>
     </article>
   )
