@@ -24,6 +24,11 @@ body {
   --green-500: #00875f;
 }
 
+:focus {
+  outline: transparent;
+  box-shadow: 0 0 0 2px var(--green-500);
+}
+
 body, input, textarea, button {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
