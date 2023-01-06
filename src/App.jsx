@@ -6,6 +6,40 @@ import styles from './App.module.css'
 
 import './global.css'
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: 'https://github.com/lucasalvesb.png',
+      name: 'Lucas Alves',
+      role: 'Front-End Developer'
+    },
+    content: [
+    {type: 'paragraph', content: 'Hello, guys!' }, 
+    {type: 'paragraph', content: 'I have just finished another task!' },
+    {type: 'paragraph', content: 'That is cool, right?'}, 
+    {type: 'link', content: 'https://github.com/lucasalvesb' }
+    ],
+    publishedAt: new Date('2022-05-03 20:00:00')
+  },
+
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'https://github.com/diego3g.png',
+      name: 'Diego Fernandes',
+      role: 'CTO'
+    },
+    content: [
+    {type: 'paragraph', content: 'This is just a random comment!' }, 
+    {type: 'paragraph', content: 'It feels great to just post anything!' },
+    {type: 'paragraph', content: 'Woohooo!'} ,
+    {type: 'link', content: 'https://github.com/diego3g' }
+    ],
+    publishedAt: new Date('2022-05-10 20:00:00')
+  },
+]
+
 export default function App() {
   return (
     <div>
@@ -13,14 +47,15 @@ export default function App() {
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          <Post
-            author="Lucas Alves"
-            content="This is a great post, man!"
-          />
-          <Post
-            author="Jonas Barbosa"
-            content="It's so great to be here!"
-          />
+          {posts.map(post => {
+            return (
+            <Post 
+              author={post.author}
+              content={post.content}
+              publishedAt={post.publishedAt}
+            />
+            )
+          })}
         </main>
       </div>
     </div>
