@@ -53,6 +53,7 @@ export default function App() {
               author={post.author}
               content={post.content}
               publishedAt={post.publishedAt}
+              key={post.id}
             />
             )
           })}
