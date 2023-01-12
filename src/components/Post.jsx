@@ -4,7 +4,14 @@ import styles from './Post.module.css'
 import { format, formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 
-export function Post({ author, publishedAt }) {
+const comments = [
+  1,
+  2,
+  3,
+  4,
+]
+
+export function Post({ author, publishedAt, content }) {
   const publishedDateFormatted = format(
     publishedAt,
     "d 'de' LLLL 'às' HH:mm'h'",
@@ -33,7 +40,15 @@ export function Post({ author, publishedAt }) {
           {publishedDateRelativeToNow}
         </time>
       </header>
-      <div className={styles.content}></div>
+      <div className={styles.content}>
+        {content.map(item => {
+          if (item.type == 'paragraph') {
+            return <p>{item.content}</p>
+          } else if (item.type == 'link') {
+            return <p><a href={item.content}>{item.content}</a></p>
+          }
+        })}
+      </div>
 
       <form className={styles.commentForm}>
         <strong>Deixe seu feedback!</strong>
@@ -44,9 +59,9 @@ export function Post({ author, publishedAt }) {
       </form>
 
       <div className={styles.commentList}>
-        <Comment />
-        <Comment />
-        <Comment />
+        {comments.map(comment => {
+          return <Comment />
+        })}
       </div>
     </article>
   )
